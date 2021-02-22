@@ -21,7 +21,11 @@ class MyApp extends StatelessWidget {
         ),
         body: Container(
           margin: EdgeInsets.all(8),
-          child: TextFormField(),
+          child: TextFormField(
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'Masukkan Suhu Dalam Celcius'),
+          ),
         ),
       ),
     );
