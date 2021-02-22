@@ -22,6 +22,10 @@ class MyApp extends StatelessWidget {
         body: Container(
           margin: EdgeInsets.all(8),
           child: TextFormField(
+            keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+            ],
             decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Masukkan Suhu Dalam Celcius'),
