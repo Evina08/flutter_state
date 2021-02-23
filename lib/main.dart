@@ -12,14 +12,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  TextEditingController etSuhu = new TextEditingController();
+  TextEditingController suhu = new TextEditingController();
 
   double _inputUser = 0;
   double _kelvin = 0;
   double _reamor = 0;
-  void _konversi() {
+  void _hitungSuhu() {
     setState(() {
-      _inputUser = double.parse(etSuhu.text);
+      _inputUser = double.parse(suhu.text);
       _kelvin = _inputUser + 273;
       _reamor = (4 / 5) * _inputUser;
     });
@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                 ],
-                controller: etSuhu,
+                controller: suhu,
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Masukkan Suhu Dalam Celcius'),
@@ -60,6 +60,7 @@ class _MyAppState extends State<MyApp> {
                       children: <Widget>[
                         Text("Suhu dalam Kelvin",
                             style: TextStyle(height: 1.5, fontSize: 20)),
+                        Text("$_kelvin"),
                       ],
                     ),
                     Column(
@@ -67,13 +68,14 @@ class _MyAppState extends State<MyApp> {
                       children: <Widget>[
                         Text("Suhu dalam Reamor",
                             style: TextStyle(height: 1.5, fontSize: 20)),
+                        Text("$_reamor"),
                       ],
                     )
                   ],
                 ),
               ),
               RaisedButton(
-                onPressed: () {},
+                onPressed: _hitungSuhu,
                 color: Colors.blue,
                 textColor: Colors.white,
                 child: Text("Konversi Suhu"),
