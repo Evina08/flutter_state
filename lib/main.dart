@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'input.dart';
+import 'convert.dart';
+import 'result.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,14 +17,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   TextEditingController suhu = new TextEditingController();
 
-  double _inputUser = 0;
+  double _inputSuhu = 0;
   double _kelvin = 0;
   double _reamor = 0;
   void _hitungSuhu() {
     setState(() {
-      _inputUser = double.parse(suhu.text);
-      _kelvin = _inputUser + 273;
-      _reamor = (4 / 5) * _inputUser;
+      // _inputSuhu = double.parse(suhu.text);
+      _inputSuhu = double.parse(suhu.text);
+      _kelvin = _inputSuhu + 273;
+      _reamor = (4 / 5) * _inputSuhu;
     });
   }
 
@@ -41,45 +45,9 @@ class _MyAppState extends State<MyApp> {
           margin: EdgeInsets.all(8),
           child: Column(
             children: [
-              TextFormField(
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                ],
-                controller: suhu,
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Masukkan Suhu Dalam Celcius'),
-              ),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("Suhu dalam Kelvin",
-                            style: TextStyle(height: 1.5, fontSize: 20)),
-                        Text("$_kelvin"),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("Suhu dalam Reamor",
-                            style: TextStyle(height: 1.5, fontSize: 20)),
-                        Text("$_reamor"),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              RaisedButton(
-                onPressed: _hitungSuhu,
-                color: Colors.blue,
-                textColor: Colors.white,
-                child: Text("Konversi Suhu"),
-              ),
+              Input(suhu: suhu),
+              Result(kelvin: _kelvin, reamor: _reamor),
+              Convert(konvertHandler: _hitungSuhu),
             ],
           ),
         ),
