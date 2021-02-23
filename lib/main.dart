@@ -12,11 +12,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  TextEditingController etCelcius = new TextEditingController();
+  TextEditingController etSuhu = new TextEditingController();
 
   double _inputUser = 0;
   double _kelvin = 0;
   double _reamor = 0;
+  void _konversi() {
+    setState(() {
+      _inputUser = double.parse(etSuhu.text);
+      _kelvin = _inputUser + 273;
+      _reamor = (4 / 5) * _inputUser;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +46,7 @@ class _MyAppState extends State<MyApp> {
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                 ],
-                controller: etCelcius,
+                controller: etSuhu,
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Masukkan Suhu Dalam Celcius'),
