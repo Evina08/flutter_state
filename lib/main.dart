@@ -48,7 +48,13 @@ class MyApp extends StatelessWidget {
                     ],
                   )
                 ],
-              )
+              ),
+              MaterialButton(
+                onPressed: null,
+                color: Colors.blue,
+                textColor: Colors.white,
+                child: Text("Konversi Suhu"),
+              ),
             ],
           ),
         ),
