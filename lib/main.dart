@@ -32,6 +32,23 @@ class MyApp extends StatelessWidget {
                     border: InputBorder.none,
                     hintText: 'Masukkan Suhu Dalam Celcius'),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text("Suhu dalam Kelvin",
+                          style: TextStyle(height: 1.5, fontSize: 20)),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text("Suhu dalam Reamor",
+                          style: TextStyle(height: 1.5, fontSize: 20)),
+                    ],
+                  )
+                ],
+              )
             ],
           ),
         ),
