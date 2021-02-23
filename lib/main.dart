@@ -68,15 +68,11 @@ class _MyAppState extends State<MyApp> {
                   )
                 ],
               ),
-              Container(
-                height: 50,
-                alignment: Alignment.center,
-                child: MaterialButton(
-                  onPressed: null,
-                  color: Colors.blue,
-                  textColor: Colors.white,
-                  child: Text("Konversi Suhu"),
-                ),
+              RaisedButton(
+                onPressed: () {},
+                color: Colors.blue,
+                textColor: Colors.white,
+                child: Text("Konversi Suhu"),
               ),
             ],
           ),
