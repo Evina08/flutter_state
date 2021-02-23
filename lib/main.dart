@@ -12,6 +12,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  double _inputUser = 0;
+  double _kelvin = 0;
+  double _reamor = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
