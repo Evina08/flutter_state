@@ -33,7 +33,8 @@ class Result extends StatelessWidget {
                   style: TextStyle(height: 1.5, fontSize: 15)),
               Text("$_reamor", style: TextStyle(height: 2, fontSize: 25)),
             ],
-          )
+          ),
+          
         ],
       ),
     );

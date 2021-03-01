@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
   double _inputSuhu = 0;
   double _kelvin = 0;
   double _reamor = 0;
+  var listItem = ["Kelvin", "Reamur"];
   void _hitungSuhu() {
     setState(() {
       // _inputSuhu = double.parse(suhu.text);
@@ -46,6 +47,16 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               Input(suhu: suhu),
+              DropdownButton<String>(
+                items: listItem.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                value: null,
+                onChanged: (String changeValue) {},
+              ),
               Result(kelvin: _kelvin, reamor: _reamor),
               Convert(konvertHandler: _hitungSuhu),
             ],
