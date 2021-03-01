@@ -15,6 +15,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String _newValue = "Kelvin";
+  double _result = 0;
+
   TextEditingController suhu = new TextEditingController();
 
   double _inputSuhu = 0;
@@ -23,10 +26,11 @@ class _MyAppState extends State<MyApp> {
   var listItem = ["Kelvin", "Reamur"];
   void _hitungSuhu() {
     setState(() {
-      // _inputSuhu = double.parse(suhu.text);
       _inputSuhu = double.parse(suhu.text);
-      _kelvin = _inputSuhu + 273;
-      _reamor = (4 / 5) * _inputSuhu;
+      if (_newValue == "Kelvin")
+        _result = _inputSuhu + 273;
+      else
+        _result = (4 / 5) * _inputSuhu;
     });
   }
 
@@ -54,10 +58,14 @@ class _MyAppState extends State<MyApp> {
                     child: Text(value),
                   );
                 }).toList(),
-                value: null,
-                onChanged: (String changeValue) {},
+                value: _newValue,
+                onChanged: (String changeValue) {
+                  setState(() {
+                    _newValue = changeValue;
+                  });
+                },
               ),
-              Result(kelvin: _kelvin, reamor: _reamor),
+              Result(result: _result),
               Convert(konvertHandler: _hitungSuhu),
             ],
           ),
