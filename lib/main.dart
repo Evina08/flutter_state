@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'input.dart';
 import 'convert.dart';
 import 'result.dart';
+import 'riwayat.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,14 +25,16 @@ class _MyAppState extends State<MyApp> {
   double _inputSuhu = 0;
   double _kelvin = 0;
   double _reamor = 0;
-  var listItem = ["Kelvin", "Reamur"];
+  var listItem = ["Kelvin", "Reamur", "Fahrenheit"];
   void _hitungSuhu() {
     setState(() {
       _inputSuhu = double.parse(suhu.text);
       if (_newValue == "Kelvin")
         _result = _inputSuhu + 273;
-      else
+      else if (_newValue == "Reamur")
         _result = (4 / 5) * _inputSuhu;
+      else
+        _result = (_inputSuhu * 9 / 5) + 32;
       listViewItem.add("$_newValue : $_result");
     });
   }
@@ -64,6 +67,7 @@ class _MyAppState extends State<MyApp> {
                 onChanged: (String changeValue) {
                   setState(() {
                     _newValue = changeValue;
+                    _hitungSuhu();
                   });
                 },
               ),
@@ -77,15 +81,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               Expanded(
-                child: ListView(
-                    children: listViewItem.map((String value) {
-                  return Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        value,
-                        style: TextStyle(fontSize: 15),
-                      ));
-                }).toList()),
+                child: Riwayat(listViewItem: listViewItem),
               ),
             ],
           ),
