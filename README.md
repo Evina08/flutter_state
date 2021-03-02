@@ -5,9 +5,9 @@
 - NIM : 1931710072
 
 - Minggu ke-4
-![gambar 1](img/image4.jpeg)
+- ![gambar 1](img/image4.jpg)
 - Minggu ke-3
-![gambar 1](img/image1.jpeg)
+- ![gambar 1](img/image1.jpeg)
 
 
 
