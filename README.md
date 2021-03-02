@@ -4,8 +4,10 @@
 - Kelas : MI-2B
 - NIM : 1931710072
 
+- Minggu ke-4
+![gambar 1](img/image4.jpeg)
+- Minggu ke-3
 ![gambar 1](img/image1.jpeg)
-![gambar 2](img/image2.jpeg)
-![gambar 3](img/image3.jpeg)
+
 
 
