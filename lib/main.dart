@@ -15,6 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<String> listViewItem = List<String>();
   String _newValue = "Kelvin";
   double _result = 0;
 
@@ -31,6 +32,7 @@ class _MyAppState extends State<MyApp> {
         _result = _inputSuhu + 273;
       else
         _result = (4 / 5) * _inputSuhu;
+      listViewItem.add("$_newValue : $_result");
     });
   }
 
@@ -67,6 +69,24 @@ class _MyAppState extends State<MyApp> {
               ),
               Result(result: _result),
               Convert(konvertHandler: _hitungSuhu),
+              Container(
+                margin: EdgeInsets.only(top: 10, bottom: 10),
+                child: Text(
+                  "Riwayat Konversi",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                    children: listViewItem.map((String value) {
+                  return Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        value,
+                        style: TextStyle(fontSize: 15),
+                      ));
+                }).toList()),
+              ),
             ],
           ),
         ),
